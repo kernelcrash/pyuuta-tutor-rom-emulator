@@ -14,7 +14,8 @@ Overview
 - Emulates ROM cartridges (8K or 16K only, not the 32K ones)
 - Take a cheap STM32F407 board (US$10 or so 'before the chip shortage'). ebay/aliexpress list several
   different stm32f407vet6/vgt6 boards with micro-SD adapters. Put it on some proto board and insert into
-  the Pyuuta cartridge slot on top.
+  the Pyuuta cartridge slot on top (I only have a Tomy Pyuuta, so have not tested it on the other
+  related models).
 - Make a FAT32 partition on a micro SD card and put rom and dsk disk images on it.
 - Plug the micro SD into the STM32F4 board.
 - The STM32F4 board presents a rom in real time
@@ -37,9 +38,10 @@ Using a STM32F407VET6 or STM32F407VGT6 board
    GND         - GND
 
 ```
+Wire the board into the cartridge slot on top (I used a prototype board with an edge 
+connector to do this).  Pins 1 and 2 are closest to the rear right corner of the Pyuuta when looking at the 
+computer front-on with the keyboard closest to you.
 ```
-Pins 1 and 2 are closest to the rear right corner of the Pyuuta when looking at the 
-computer front on with the keyboard closest to you.
 
        BACK ROM PINS        FRONT ROW PINS
        ---                  ------
@@ -62,13 +64,14 @@ computer front on with the keyboard closest to you.
       31 _WE / CRUCLK - PC1  32 N.C.
       33 N.C.                34 N.C.
       35 _CS_CROM0 - PC0     36 N.C.
-    
 
-
-
+ NB: I think _WE/CRUCLK is on a different pin on the Pyuuta Jr.
 ```
 If you get a board with a microSD card slot, then the 'standard' wiring of the SD adapter
 is fine.
+
+I usually power the stm32f407 board from USB, but you should be able to power it from the cartridge connector. Just connect VCC to 
+the +5V of stm32f407 board.
 
 The  DEVEBOX stm32f407 board I used during development has an LED attached to PA1, so various errors will result in PA1 flashing.
 
@@ -89,7 +92,7 @@ Power on the stm32f407 board first. Then power on the Pyuuta.
 
 Initially, the first file that you copied to the pyuuta directory on the SD card will appear as a cartridge to the Tutor/Pyuuta.
 At the main 'GRAPHIC/G-BASIC/CARTRIDGE' screen select cartridge and the game should start.  The NEXT and PREV buttons allow you to
-setp through the list of cartridge images in the pyuuta directory. I tend to use one of two ways
+step through the list of cartridge images in the pyuuta directory. I tend to use one of two ways
 - If the stm32f407 board is powered seperately via USB, power off the Tutor/Pyuuta and press NEXT or PREV one or more times. Then power
 on the Tutor/Pyuuta and select CARTRIDGE from the menu.
 - You can 'get away' with pressing NEXT and PREV while the Tutor/Pyuuta is powered on by ; first press the MON key. The Tutor/Pyuuta
@@ -128,8 +131,8 @@ This project is really just a very cut down version of the code for the TI99/4a 
 Thanks
 ------
 
-The floodgap site ; https://www.floodgap.com/retrobits/tomy/
-Enri's home page ; http://www43.tok2.com/home/cmpslv/index.htm (you might need to grab it off archive.org)
+- The floodgap site ; https://www.floodgap.com/retrobits/tomy/
+- Enri's home page ; http://www43.tok2.com/home/cmpslv/index.htm (you might need to grab it off archive.org)
 
 
 
