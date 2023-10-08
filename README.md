@@ -2,9 +2,9 @@ pyuuta-tutor-rom-emulator
 =========================
 
 ROM cartridge emulator for the Tomy Pyuuta (and most likely the Tomy Tutor and
-other related machines) using a stm32f407 board. 
+other related machines) using a STM32F407 board. 
 
-More info at   https://www.kernelcrash.com/blog/tomy-pyuuta
+More info at   https://www.kernelcrash.com/blog/the-tomy-pyuuta
 
 Based on the ti994a-rom-grom-ram-and-floppy-emulator and other ROM emulators at kernelcrash.com
 
@@ -13,7 +13,7 @@ Overview
 --------
 - Emulates ROM cartridges (8K or 16K only, not the 32K ones)
 - Take a cheap STM32F407 board (US$10 or so 'before the chip shortage'). ebay/aliexpress list several
-  different stm32f407vet6/vgt6 boards with micro-SD adapters. Put it on some proto board and insert into
+  different STM32F407VET6/VGT6 boards with micro-SD adapters. Put it on some proto board and insert into
   the Pyuuta cartridge slot on top (I only have a Tomy Pyuuta, so have not tested it on the other
   related models).
 - Make a FAT32 partition on a micro SD card and put rom and dsk disk images on it.
@@ -43,8 +43,8 @@ connector to do this).  Pins 1 and 2 are closest to the rear right corner of the
 computer front-on with the keyboard closest to you.
 ```
 
-       BACK ROM PINS        FRONT ROW PINS
-       ---                  ------
+       BACK ROW PINS          FRONT ROW PINS
+       -------------          --------------
 
        1 GND - GND            2 GND - GND
        3 D7 - PD8             4 N.C.
@@ -70,12 +70,12 @@ computer front-on with the keyboard closest to you.
 If you get a board with a microSD card slot, then the 'standard' wiring of the SD adapter
 is fine.
 
-I usually power the stm32f407 board from USB, but you should be able to power it from the cartridge connector. Just connect VCC to 
-the +5V of stm32f407 board.
+I usually power the STM32F407 board from USB, but you should be able to power it from the cartridge connector. Just connect VCC to 
+the +5V of STM32F407 board.
 
-The  DEVEBOX stm32f407 board I used during development has an LED attached to PA1, so various errors will result in PA1 flashing.
+The  DEVEBOX STM32F407 board I used during development has an LED attached to PA1, so various errors will result in PA1 flashing.
 
-It is simpler if you just tie the GND pins of the STM32407 board to the Pyuuta , and power the stm32407 board seperately from a 
+It is simpler if you just tie the GND pins of the STM32F407 board to the Pyuuta , and power the STM32F407 board seperately from a 
 USB cable. This just makes it easier to cycle through games on the SD card while the Pyuuta is turned off.
 
 Setting up the micro SD card and using it
@@ -88,12 +88,12 @@ FAT32.
   - Copy ROM cartridge images to the pyuuta directory. The file extension does not matter.
 ```
 
-Power on the stm32f407 board first. Then power on the Pyuuta.
+Power on the STM32F407 board first. Then power on the Pyuuta.
 
 Initially, the first file that you copied to the pyuuta directory on the SD card will appear as a cartridge to the Tutor/Pyuuta.
 At the main 'GRAPHIC/G-BASIC/CARTRIDGE' screen select cartridge and the game should start.  The NEXT and PREV buttons allow you to
 step through the list of cartridge images in the pyuuta directory. I tend to use one of two ways
-- If the stm32f407 board is powered seperately via USB, power off the Tutor/Pyuuta and press NEXT or PREV one or more times. Then power
+- If the STM32F407 board is powered seperately via USB, power off the Tutor/Pyuuta and press NEXT or PREV one or more times. Then power
 on the Tutor/Pyuuta and select CARTRIDGE from the menu.
 - You can 'get away' with pressing NEXT and PREV while the Tutor/Pyuuta is powered on by ; first press the MON key. The Tutor/Pyuuta
 should reset. When you get to the 'GRAPHIC/G-BASIC/CARTRIDGE' screen press the NEXT and PREV buttons one or more times, then select
@@ -113,7 +113,7 @@ Just type 'make' to build the firmware.
 
 
 
-Copying the firmware to the stm32f407 board
+Copying the firmware to the STM32F407 board
 -------------------------------------------
 
 There are lots of options for writing firmware with the stm32 chips. There is 
